@@ -1,0 +1,63 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>Repository Info</md-card-title>
+  <md-divider></md-divider>
+  <template tdLoading="loader" tdLoadingType="circular" tdLoadingMode="indeterminate" tdLoadingStrategy="replace" tdLoadingColor="primary">
+      <div layout-gt-xs="row" *ngIf="repository">
+        <div flex-gt-xs="100">
+          <ngx-charts-number-card
+            [scheme]="colorSchemeDark"
+            [results]="forks">
+          </ngx-charts-number-card>
+        </div>
+      </div>
+
+
+  </template>
+
+</md-card>
+
+<div layout-gt-sm="row">
+  <div flex-gt-sm="40">
+    <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+      <md-card-title>All Contributors</md-card-title>
+      <!--<md-card-subtitle>for this product</md-card-subtitle>-->
+      <md-divider></md-divider>
+      <md-nav-list class="will-load item-list">
+        <template tdLoading="contributors" tdLoadingType="circular" tdLoadingMode="indeterminate" tdLoadingStrategy="replace" tdLoadingColor="primary">
+          <template let-item let-last="last" ngFor [ngForOf]="contributors">
+            <a md-list-item layout-align="row">
+              <img [src]="item.avatar_url" md-list-avatar>
+              <h3 md-line> {{item.login}} </h3>
+              <p md-line> {{item.html_url}} </p>
+              <span flex></span>
+              <span class="md-caption text-right" flex="20">Contributions: {{item.contributions}} </span>
+            </a>
+            <md-divider *ngIf="!last" md-inset></md-divider>
+          </template>
+        </template>
+      </md-nav-list>
+    </md-card>
+  </div>
+
+  <div flex-gt-sm="60">
+    <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+      <md-card-title>All Issues</md-card-title>
+      <!--<md-card-subtitle>for this product</md-card-subtitle>-->
+      <md-divider></md-divider>
+      <md-nav-list class="will-load item-list">
+        <template tdLoading="issues" tdLoadingType="circular" tdLoadingMode="indeterminate" tdLoadingStrategy="replace" tdLoadingColor="primary">
+          <template let-item let-last="last" ngFor [ngForOf]="issues">
+            <a md-list-item layout-align="row">
+              <img [src]="item.user.avatar_url" md-list-avatar>
+              <h3 md-line> {{item.title}} </h3>
+              <p md-line> {{item.user.login}} </p>
+              <span flex></span>
+              <span class="md-caption text-right" flex="40">Created: {{item.created_at | date:'yMMMd'}} </span>
+            </a>
+            <md-divider *ngIf="!last" md-inset></md-divider>
+          </template>
+        </template>
+      </md-nav-list>
+    </md-card>
+  </div>
+</div>

@@ -29,6 +29,12 @@ export class MainComponent {
       route: '/templates',
       icon: 'view_module',
     },
+    {
+      title: 'Github API',
+      route: '/github-statistic',
+      icon: 'github',
+      iconType: 'svg'
+    },
   ];
 
   constructor(private _router: Router) {}

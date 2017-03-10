@@ -32,6 +32,9 @@ import { ChartComponent } from '../components/chart/chart.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GithubStatisticComponent } from './github-statistic/github-statistic.component';
+import { GithubUserComponent } from './github-statistic/github-user/github-user.component';
+import { GithubRepositoryComponent } from './github-statistic/github-repository/github-repository.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -58,6 +61,9 @@ const httpInterceptorProviders: Type<any>[] = [
     DashboardTemplateComponent,
     EmailTemplateComponent,
     EditorTemplateComponent,
+    GithubStatisticComponent,
+    GithubUserComponent,
+    GithubRepositoryComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,

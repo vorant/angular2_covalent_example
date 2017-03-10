@@ -1,0 +1,25 @@
+<td-layout-nav-list #navList
+                    logo="assets:covalent"
+                    toolbarTitle="Github"
+                    [opened]="media.registerQuery('gt-sm') | async"
+                    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'">
+
+  <md-nav-list td-sidenav-content (click)="!media.query('gt-sm') && navList.close()">
+    <template  let-item let-last="last" ngFor [ngForOf]="githubUsers">
+      <a md-list-item [routerLink]="[item.login]">
+        <img [src]="item.avatar_url" md-list-avatar>
+        <h3 md-line> {{item.name || item.login}} </h3>
+        <p md-line> {{item.blog}} </p>
+      </a>
+      <md-divider *ngIf="!last" md-inset></md-divider>
+    </template>
+  </md-nav-list>
+
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Github repositories info</span>
+    <span flex></span>
+  </div>
+
+  <router-outlet></router-outlet>
+</td-layout-nav-list>

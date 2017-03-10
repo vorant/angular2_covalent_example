@@ -17,13 +17,15 @@ import { TemplatesComponent } from './templates/templates.component';
 import { DashboardTemplateComponent } from './templates/dashboard/dashboard.component';
 import { EmailTemplateComponent } from './templates/email/email.component';
 import { EditorTemplateComponent } from './templates/editor/editor.component';
+import { GithubStatisticComponent } from './github-statistic/github-statistic.component';
+import { GithubUserComponent } from './github-statistic/github-user/github-user.component';
+import { GithubRepositoryComponent } from './github-statistic/github-repository/github-repository.component';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: '', component: MainComponent, children: [{
-      component: DashboardComponent,
-      path: '',
-    },
+  {path: '', component: MainComponent, children: [
+    {path: '', component: DashboardComponent, },
     {path: 'product', component: DashboardProductComponent, children: [
       {path: '', component: ProductOverviewComponent},
       {path: 'stats', component: ProductStatsComponent},
@@ -48,6 +50,11 @@ const routes: Routes = [
       {path: 'dashboard', component: DashboardTemplateComponent},
       {path: 'email', component: EmailTemplateComponent},
       {path: 'editor', component: EditorTemplateComponent},
+    ]},
+    {path: 'github-statistic', component: GithubStatisticComponent, children: [
+      // {path: '', component: GithubStatisticComponent},
+      {path: ':user', component: GithubUserComponent},
+      {path: ':user/:repository', component: GithubRepositoryComponent}
     ]},
   ]},
 ];

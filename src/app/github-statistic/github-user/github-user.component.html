@@ -1,0 +1,24 @@
+<md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <md-card-title>Repositories</md-card-title>
+  <md-divider></md-divider>
+  <template tdLoading="loader" tdLoadingType="circular" tdLoadingMode="indeterminate" tdLoadingStrategy="replace" tdLoadingColor="primary">
+    <md-nav-list class="will-load" >
+      <div class="md-padding" *ngIf="!githubRepositories || githubRepositories.length === 0" layout="row" layout-align="center center">
+        <h3>No logs to display.</h3>
+      </div>
+
+      <template let-item let-last="last" ngFor [ngForOf]="githubRepositories">
+        <a md-list-item [routerLink]="[item.name]" [title]="item.name">
+          <md-icon md-list-icon>folder</md-icon>
+          <h3 md-line>
+            {{item.name}}
+          </h3>
+          <p md-line >
+            {{item.description}}
+          </p>
+        </a>
+        <md-divider *ngIf="!last"></md-divider>
+      </template>
+    </md-nav-list>
+  </template>
+</md-card>

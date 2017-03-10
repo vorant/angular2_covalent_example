@@ -2,7 +2,13 @@
   <td-navigation-drawer logo="assets:covalent" sidenavTitle="Quickstart" name="Firstname Lastname" email="firstname.lastname@company.com">
     <md-nav-list>
       <template let-item let-last="last" ngFor [ngForOf]="routes">
-        <a md-list-item [routerLink]="[item.route]" (click)="layout.close()"><md-icon>{{item.icon}}</md-icon>{{item.title}}</a>
+        <a md-list-item [routerLink]="[item.route]" (click)="layout.close()">
+          <md-icon *ngIf="item.iconType !== 'svg'">{{item.icon}}</md-icon>
+          <md-icon *ngIf="item.iconType === 'svg'" svgIcon="assets:github"></md-icon>
+
+          {{item.title}}
+        </a>
+        <!--svgIcon="assets:github"-->
       </template>
     </md-nav-list>
     <md-nav-list td-navigation-drawer-menu>
