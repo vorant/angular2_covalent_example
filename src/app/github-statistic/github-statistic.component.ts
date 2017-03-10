@@ -22,19 +22,23 @@ export class GithubStatisticComponent implements OnInit, AfterViewInit {
 
   constructor(private _titleService: Title,
               private _githubService: GithubService,
-              public media: TdMediaService) {
+              public media: TdMediaService,
+              private _loadingService: TdLoadingService,
+  ) {
 
   }
 
   ngAfterViewInit(): void {
     // broadcast to all listener observables when loading the page
     this.media.broadcast();
+    this._loadingService.register('loader');
 
     this._titleService.setTitle( 'Github repositories' );
 
     this._githubService.getUsers().subscribe(
       (user: GithubUser ) => {
         this.githubUsers.push(user);
+        this._loadingService.resolve('loader');
       },
       (error: Error) => {
 

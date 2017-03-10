@@ -17,7 +17,7 @@ import {
 import { GithubUser } from '../app/github-statistic/github-user.class';
 import { GithubRepository } from '../app/github-statistic/github-repository.class';
 import { GithubContributor } from '../app/github-statistic/github-contributor.class';
-import { GithubIssue } from '../app/github-statistic/github-issue.clsaa';
+import { GithubIssue } from '../app/github-statistic/github-issue.class';
 
 @Injectable()
 export class GithubService {
@@ -32,6 +32,7 @@ export class GithubService {
     'd3',
     'lodash',
     'backbone',
+    'Airbnb',
   ];
 
   constructor(private _http: Http,

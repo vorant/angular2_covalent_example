@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TdLoadingService, TdMediaService } from '@covalent/core';
-
-
 
 import { GithubRepository } from '../github-repository.class';
 import { GithubUser } from '../github-user.class';
 import { GithubService } from '../../../services';
-
-
 
 @Component({
   selector: 'qs-github-user',
   templateUrl: './github-user.component.html',
   styleUrls: ['./github-user.component.scss']
 })
-export class GithubUserComponent implements OnInit {
+export class GithubUserComponent implements OnInit, AfterViewInit {
 
-  githubRepositories: GithubRepository[] = [];
+  githubRepositories: GithubRepository[];
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,9 +21,12 @@ export class GithubUserComponent implements OnInit {
     private _loadingService: TdLoadingService,
   ) { }
 
-  ngOnInit() {
-    this._loadingService.register('loader');
+  ngOnInit() {}
+
+  ngAfterViewInit() {
     this._route.params.subscribe((params: {user: string}) => {
+      this._loadingService.register('lloader');
+      this.githubRepositories = [];
       this.showRepositories(params.user);
     });
   }
@@ -38,7 +37,11 @@ export class GithubUserComponent implements OnInit {
       (repositories: GithubRepository[] ) => {
         this.githubRepositories = repositories;
 
-        this._loadingService.resolve('loader');
+
+        setTimeout(()=>{
+          this._loadingService.resolve('lloader');
+        }, 1000);
+
       },
       (error: Error) => {
 

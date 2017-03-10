@@ -6,7 +6,7 @@ import { TdLoadingService, TdMediaService } from '@covalent/core';
 import { GithubRepository } from '../github-repository.class';
 import { GithubUser } from '../github-user.class';
 import { GithubContributor } from '../github-contributor.class';
-import { GithubIssue } from '../github-issue.clsaa';
+import { GithubIssue } from '../github-issue.class';
 import { GithubService } from '../../../services';
 
 @Component({
