@@ -18,7 +18,7 @@
     "webdriver-update": "bash ./node_modules/.bin/webdriver-manager update",
     "test": "ng test --code-coverage --single-run",
     "ghpages-deploy": "ng build --base-href /covalent-quickstart/ --aot -prod --sourcemap=false && bash scripts/ghpages-deploy",
-    "deploy": "ng build --prod --base-href 'https://vorant.github.io/angular2_covalent_example/ && ngh"
+    "deploy": "ng build --prod --base-href 'https://vorant.github.io/angular2_covalent_example/' && ngh --message='next commit"
   },
   "engines": {
     "node": ">4.4 < 7",
